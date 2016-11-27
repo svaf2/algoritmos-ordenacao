@@ -9,12 +9,13 @@ def qs(esquerda, direita, lista):
 
 def retornarPivo(esquerda, direita, lista):
     meio = (esquerda + direita) // 2
+    pivo = direita
     if lista[esquerda] < lista[meio]:
-        if lista[meio] < lista[direita]: return meio
-        elif lista[direita] < lista[esquerda]: return esquerda
-        return direita
-    elif lista[esquerda] < lista[direita]: return esquerda
-    return direita
+        if lista[meio] < lista[direita]:
+            pivo = meio
+    elif lista[esquerda] < lista[direita]:
+        pivo = esquerda
+    return pivo
 
 def part(esquerda, direita, lista):
     index = retornarPivo(esquerda, direita, lista)
@@ -27,6 +28,4 @@ def part(esquerda, direita, lista):
             lista[x], lista[contador] = lista[contador], lista[x]
     lista[esquerda], lista[contador] = lista[contador], lista[esquerda]
     return contador
-                                                                                                  
-    
-    
+
