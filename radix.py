@@ -1,20 +1,20 @@
 from random import randint
 
-def radixSort (lista):
-    digitos = len(str(max(lista)))
+def radixSort (array):
+    digits = len(str(max(array)))
     mod = 10
     div = 1
-    for digito in range(0, digitos):
-        lista = ordenarRadix(mod, div, lista)
+    for _ in range(0, digits):
+        array = sortOnce(mod, div, array)
         mod *= 10
         div *= 10
-    return lista
+    return array
 
-def ordenarRadix(mod, div, lista):
-    auxiliar = [list() for x in range(0, 10)]
-    resultado = []
-    for num in lista:
-        auxiliar[(num % mod) // div].append(num)
-    for num in auxiliar:
-        resultado.extend(num)
-    return resultado
+def sortOnce(mod, div, array):
+    aux = [list() for x in range(0, 10)]
+    result = []
+    for num in array:
+        aux[(num % mod) // div].append(num)
+    for num in aux:
+        result.extend(num)
+    return result
